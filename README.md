@@ -1,4 +1,4 @@
-# shoplist
+# Shopping List App
 Application to manage the shopping list
 
 ## Requirements
