@@ -3,14 +3,18 @@ Application to manage the shopping list
 
 ## Requirements
 
-* npm
-* nodejs
-* mongodb
+* npm >=3.5.2
+* nodejs >=4.2.6
+* mongodb >=2.6.10
 
-
-# Installation and run
+## Installing dependencies from package.json
 ```
-npm install
-nodejs server.js
+$ cd shoplist
+$ npm install
+``` 
+
+## Run and check
+```
+$ nodejs server.js
 ``` 
 Now you can open the browser pointing to **localhost:9981**
