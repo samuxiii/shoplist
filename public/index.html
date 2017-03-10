@@ -17,7 +17,7 @@
             <div class="col-sm-4 col-sm-offset-4">
                 <div class="checkbox" ng-repeat="item in list">
                     <label>
-                        <input type="checkbox" ng-click="deleteItem(item._id)"> {{ item.text }} 
+                        <input type="checkbox" checklist-model="user.list" checklist-value="item" ng-click="selectItem(item)" ng-dblclick="deleteItem(item._id)"> {{ item.text }} 
                     </label>
                  </div>
              </div>
@@ -30,6 +30,7 @@
                         <input type="text" class="form-control input-lg text-center" placeholder="Add new item" ng-model="formItem.text">
                     </div>
                     <button class="btn btn-primary btn-lg" ng-click="createItem()">Add</button>
+                    <button class="btn btn-secondary btn-lg" ng-click="wipe()">Wipe</button>
                 </form>
             </div>
         </div>

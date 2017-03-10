@@ -3,7 +3,10 @@ angular.module('shoppingList', []);
 function shoplistController($scope, $http) {  
     $scope.formItem = {};
 
-    //retrieve the complete list
+    //temporary array for selected items
+    $scope.user = { list:[] };
+
+    //first retrieve the complete list
     $http.get('/api/shoplist')
         .success(function(data) {
             $scope.list = data;
@@ -13,6 +16,7 @@ function shoplistController($scope, $http) {
             console.log('Error: ' + data);
         });
 
+    /* methods */
     //add a new item to the shopping list
     $scope.createItem = function(){
         $http.post('/api/shoplist', $scope.formItem)
@@ -36,5 +40,18 @@ function shoplistController($scope, $http) {
             .error(function(data) {
                 console.log('Error:' + data);
             });
+    };
+
+    //save the selected items
+    $scope.selectItem = function(item) { 
+	$scope.user.list.push(item); 
+    };
+
+    //remove the selected items
+    $scope.wipe = function() {
+	angular.forEach($scope.user.list, function(v, k){
+	    console.log("Wipe: " + v.text);
+	    $scope.deleteItem(v._id);
+	})
     };
 }
