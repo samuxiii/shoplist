@@ -29,8 +29,12 @@
                     <div class="form-group">
                         <input type="text" class="form-control input-lg text-center" placeholder="Add new item" ng-model="formItem.text">
                     </div>
-                    <button class="btn btn-primary btn-lg" ng-click="createItem()">Add</button>
-                    <button class="btn btn-warning btn-lg" ng-click="wipe()">Wipe</button>
+                    <button class="btn btn-primary btn-lg" ng-click="createItem()">
+                        <span class="glyphicon glyphicon-plus"></span> Add
+                    </button>
+                    <button class="btn btn-warning btn-lg" ng-click="wipe()">
+                        <span class="glyphicon glyphicon-remove"></span> Wipe
+                    </button>
                 </form>
             </div>
         </div>
