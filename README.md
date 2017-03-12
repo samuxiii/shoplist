@@ -15,6 +15,6 @@ $ npm install
 
 ## Run and check
 ```
-$ nodejs server.js
+$ npm start
 ``` 
 Now you can open the browser pointing to **localhost:9981**

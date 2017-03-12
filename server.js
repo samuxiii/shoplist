@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost:27017/shoplist');
 
 /* configuration */
 app.configure(function() {  
-    app.use(express.static(__dirname + '/public'));
+    app.use(express.static(__dirname + '/app'));
     app.use(express.logger('dev')); 
     app.use(express.bodyParser());
     app.use(express.methodOverride());                  
@@ -67,7 +67,7 @@ app.delete('/api/shoplist/:item', function(req, res) {
 
 //define where the index is placed
 app.get('*', function(req, res) {  
-    res.sendfile('./public/index.html');                
+    res.sendfile('./app/index.html');                
 });
 
 /* run */

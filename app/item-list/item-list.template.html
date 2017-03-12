@@ -1,0 +1,32 @@
+<div class="container"> 
+    <div class="jumbotron text-center">
+        <h1>Shopping List<span class="label label-info">{{ $ctrl.list.length }}</span></h1>
+    </div>
+    <!-- shopping list-->
+    <div id="shop-list" class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="checkbox" ng-repeat="item in $ctrl.list">
+                <label>
+                    <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item" 
+                        ng-click="$ctrl.selectItem(item)" ng-dblclick="$ctrl.deleteItem(item._id)"> {{ item.text }} 
+                </label>
+                </div>
+            </div>
+        </div>
+        <!--Form for new items-->
+        <div id="form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Add new item" ng-model="$ctrl.formItem.text">
+                </div>
+                <button class="btn btn-primary btn-lg" ng-click="$ctrl.createItem()">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+                </button>
+                <button class="btn btn-warning btn-lg" ng-click="$ctrl.wipe()">
+                    <span class="glyphicon glyphicon-remove"></span> Wipe
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
