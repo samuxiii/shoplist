@@ -1,5 +1,7 @@
 'use strict';
 
-angular.module('shoppingList', [
-    'itemList'
+angular.module('shoppingApp', [
+    'ngRoute',
+    'itemList',
+    'admin'
 ]);

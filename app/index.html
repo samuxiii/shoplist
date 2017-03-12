@@ -1,5 +1,5 @@
 <!doctype html>  
-<html lang="en" ng-app="shoppingList">  
+<html lang="en" ng-app="shoppingApp">  
 <head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-route.min.js"></script>
     
     <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="admin/admin.module.js"></script>
+    <script src="admin/admin.component.js"></script>
     <script src="item-list/item-list.module.js"></script>
     <script src="item-list/item-list.component.js"></script>
 </head>  
 <body>
-    <item-list></item-list>
+    <div ng-view></div>
 </body>  
     
 </html>  

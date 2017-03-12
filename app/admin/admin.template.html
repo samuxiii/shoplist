@@ -1,0 +1,18 @@
+<div class="container"> 
+    <div class="jumbotron text-center">
+        <h1>Shopping List</h1>
+    </div>
+    <!-- shopping list-->
+    <div id="shop-list" class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="checkbox" ng-repeat="item in $ctrl.defaultList">
+                <button class="btn btn-primary btn-lg" ng-click="">
+                    <span class="glyphicon glyphicon-plus"></span> {{item}}
+                </button>
+            </div>
+            <a href="#!/" class="btn btn-success btn-lg" role="button">
+                <span class="glyphicon glyphicon-arrow-left"></span> Back
+            </a>
+        </div>
+    </div>
+</div>
