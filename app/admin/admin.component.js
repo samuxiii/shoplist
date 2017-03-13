@@ -18,16 +18,13 @@ angular.
 
         /* methods */
         //add a new item to the shopping list
-        self.createItem = function(){
-            $http.post('/api/shoplist', self.formItem)
-                .success(function(data) {
-                    self.formItem = {};
-                    self.list = data;
-                    console.log(data);
-                })
-                .error(function(data) {
-                    console.log('Error:' + data);
-                });
+        self.addItem = function(item){
+          /* TODO: add to the shopping list */
+          //remove from the current list
+          var i = self.defaultList.indexOf(item);
+          if (i !=-1 ) {
+            self.defaultList.splice(i, 1);
+          }
         };
       }
     //]
