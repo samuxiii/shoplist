@@ -8,7 +8,7 @@
             <div class="checkbox" ng-repeat="item in $ctrl.list">
                 <label>
                     <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item" 
-                        ng-click="$ctrl.selectItem(item)" ng-dblclick="$ctrl.deleteItem(item._id)"> {{ item.text }} 
+                        ng-click="$ctrl.updateSelectedItems(item)" ng-dblclick="$ctrl.deleteItem(item._id)"> {{ item.text }} 
                 </label>
                 </div>
             </div>
