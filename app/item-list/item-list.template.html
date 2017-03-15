@@ -1,10 +1,12 @@
 <div class="container"> 
     <div class="jumbotron text-center">
-        <h1>Shopping List<span class="label label-info">{{ $ctrl.list.length }}</span></h1>
+        <h1>
+            <span class="glyphicon glyphicon-shopping-cart"></span> Shopping List
+            <span class="label label-info">{{ $ctrl.list.length }}</span></h1>
     </div>
     <!-- shopping list-->
     <div id="shop-list" class="row">
-        <div class="col-sm-4 col-sm-offset-4">
+        <div class="col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-5">
             <div class="checkbox" ng-repeat="item in $ctrl.list">
                 <label>
                     <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item" 
