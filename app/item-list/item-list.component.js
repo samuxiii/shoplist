@@ -25,6 +25,10 @@ angular.
         /* methods */
         //add a new item to the shopping list
         self.createItem = function(){
+            //avoid empty items
+            if (!self.formItem.text)
+                return;
+
             $http.post('/api/shoplist', self.formItem)
                 .success(function(data) {
                     self.formItem = {};
