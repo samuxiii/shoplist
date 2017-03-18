@@ -1,8 +1,21 @@
-
-body {
-    margin: 0;
-    background: url('../img/background.jpg');
-    background-size: 1440px 800px;
+.container {
+    margin: auto;
+    width: 100%;
+    background: 
+        linear-gradient(
+        rgba(255, 255, 255, 0.80), 
+        rgba(255, 255, 255, 0.80)
+        ), 
+        url(../img/background.jpg) center top;
+    background-size: cover;
     background-repeat:no-repeat;
-    display: compact;
-    }
+}
+
+.jumbotron, #shop-list .item-list {
+    opacity: 0.9;
+}
+
+#shop-list .item-list {
+    background: white;
+    margin-bottom: 25px;
+}
