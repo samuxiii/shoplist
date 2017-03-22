@@ -16,7 +16,8 @@ app.configure(function() {
 
 /* database model */
 var ShopList = mongoose.model('ShopList', {  
-    text: String
+    text: String,
+    star: Boolean
 });
 
 /* endpoints */
@@ -31,8 +32,7 @@ app.get('/api/shoplist', function(req, res) {
 
 app.post('/api/shoplist', function(req, res) {  
     ShopList.create({
-        text: req.body.text,
-        done: false
+        text: req.body.text
     }, function(err, list){
         if(err) {
             res.send(err);
@@ -43,6 +43,36 @@ app.post('/api/shoplist', function(req, res) {
                 res.send(err);
             }
             res.json(list);
+        });
+    });
+});
+
+app.put('/api/shoplist/:item', function(req, res) { 
+    console.log(req.body); 
+    ShopList.findById({
+        _id: req.params.item
+    }, function(err, found){
+        if(err) {
+            res.send(err);
+        }
+        //update the found item
+        found.text = req.body.text;
+        found.star = !req.body.star;
+        console.log("saving:" + found)
+        found.save(function(err, found){
+            if (err) {
+                res.send(err);
+            }
+        }) /* save() returns promises */
+        .then(function(){
+            //retrieve the whole list
+            ShopList.find(function (err, list) {
+                if (err) {
+                    res.send(err);
+                }
+                console.log("Found:" + list);
+                res.json(list);
+            });
         });
     });
 });

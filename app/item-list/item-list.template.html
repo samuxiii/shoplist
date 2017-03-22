@@ -9,14 +9,20 @@
         <div class="item-list col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4">
             <div class="checkbox" ng-repeat="item in $ctrl.list">
                 <label>
-                    <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item" 
+                    <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item"
                         ng-click="$ctrl.updateSelectedItems(item)" ng-dblclick="$ctrl.deleteItem(item._id)"> {{ item.text }} 
                 </label>
+                <div ng-if="item.star" class="col-xs-2">
+                    <span class="glyphicon glyphicon-star" ng-click="$ctrl.starredItem(item)"></span>
+                </div>
+                <div ng-if="!item.star" class="col-xs-2">
+                    <span class="glyphicon glyphicon-star-empty" ng-click="$ctrl.starredItem(item)"></span>
                 </div>
             </div>
         </div>
-        <!--Form for new items-->
-        <div id="form" class="row">
+    </div>
+    <!--Form for new items-->
+    <div id="form" class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
                 <div class="form-group">

@@ -52,6 +52,18 @@ angular.
                 });
         };
 
+        //mark item as star
+        self.starredItem = function(item){
+            $http.put('/api/shoplist/' + item._id, item)
+                .success(function(data) {
+                    self.list = data;
+                    console.log(data);
+                })
+                .error(function(data) {
+                    console.log('Error:' + data);
+                });
+        };
+
         //manage the selected items
         self.updateSelectedItems = function(item) {
           var i = self.user.list.indexOf(item);
