@@ -12,10 +12,10 @@
                     <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item"
                         ng-click="$ctrl.updateSelectedItems(item)" ng-dblclick="$ctrl.deleteItem(item._id)"> {{ item.text }} 
                 </label>
-                <div ng-if="item.star" class="col-xs-2">
+                <div ng-if="item.star" class="star col-xs-2">
                     <span class="glyphicon glyphicon-star" ng-click="$ctrl.starredItem(item)"></span>
                 </div>
-                <div ng-if="!item.star" class="col-xs-2">
+                <div ng-if="!item.star" class="star col-xs-2">
                     <span class="glyphicon glyphicon-star-empty" ng-click="$ctrl.starredItem(item)"></span>
                 </div>
             </div>
