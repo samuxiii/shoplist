@@ -48,7 +48,6 @@ app.post('/api/shoplist', function(req, res) {
 });
 
 app.put('/api/shoplist/:item', function(req, res) { 
-    console.log(req.body); 
     ShopList.findById({
         _id: req.params.item
     }, function(err, found){
@@ -58,7 +57,6 @@ app.put('/api/shoplist/:item', function(req, res) {
         //update the found item
         found.text = req.body.text;
         found.star = !req.body.star;
-        console.log("saving:" + found)
         found.save(function(err, found){
             if (err) {
                 res.send(err);
@@ -70,7 +68,6 @@ app.put('/api/shoplist/:item', function(req, res) {
                 if (err) {
                     res.send(err);
                 }
-                console.log("Found:" + list);
                 res.json(list);
             });
         });
