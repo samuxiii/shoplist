@@ -8,18 +8,20 @@ angular.
       function AdminController($http) {
         var self = this;
 
-        self.defaultList = [
-          'Milk',
-          'Bread',
-          'Water',
-          'Ketchup',
-          'Almonds'
-        ];
+        //first retrieve the complete list
+        $http.get('/api/shoplist/starred')
+            .success(function(data) {
+                self.defaultList = data;
+                console.log(data)
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
 
         /* methods */
         //add a new item to the shopping list
         self.addItem = function(item){
-          $http.post('/api/shoplist', {'text':item})
+          $http.post('/api/shoplist', item)
                 .success(function(data) {
                     //self.list = data;
                     console.log(data);
