@@ -23,3 +23,8 @@
 .star {
     float: right;
 }
+
+.glyphicon-star, .glyphicon-star-empty {
+  color:#FFD700;
+  font-size: 18px;
+}
