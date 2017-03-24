@@ -30,6 +30,15 @@ app.get('/api/shoplist', function(req, res) {
     });
 });
 
+app.get('/api/shoplist/starred', function(req, res) {  
+    ShopList.find({star:true}, function(err, list) {
+        if(err) {
+            res.send(err);
+        }
+        res.json(list);
+    });
+});
+
 app.post('/api/shoplist', function(req, res) {  
     ShopList.create({
         text: req.body.text
