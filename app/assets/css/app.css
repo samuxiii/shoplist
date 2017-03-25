@@ -20,6 +20,10 @@
     margin-bottom: 25px;
 }
 
+input[type=checkbox]:checked + label {
+  text-decoration: line-through;
+}
+
 .check-star {
     float: right;
 }

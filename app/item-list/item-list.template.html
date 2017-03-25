@@ -8,13 +8,15 @@
     <div id="shop-list" class="row">
         <div class="item-list col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
             <div class="checkbox" ng-repeat="item in $ctrl.list">
-                <label>
-                    <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item"
-                        ng-click="$ctrl.updateSelectedItems(item)" ng-dblclick="$ctrl.deleteItem(item._id)"> {{ item.text }} 
-                </label>
+                
+                <input type="checkbox" checklist-model="$ctrl.user.list" checklist-value="item"
+                        ng-click="$ctrl.updateSelectedItems(item)" ng-dblclick="$ctrl.deleteItem(item._id)"> 
+                <label>{{ item.text }} </label>
+
                 <div ng-if="item.star" class="check-star col-xs-2">
                     <span class="glyphicon glyphicon-star" ng-click="$ctrl.starredItem(item)"></span>
                 </div>
+                
                 <div ng-if="!item.star" class="check-star col-xs-2">
                     <span class="glyphicon glyphicon-star-empty" ng-click="$ctrl.starredItem(item)"></span>
                 </div>
