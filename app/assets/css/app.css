@@ -33,7 +33,7 @@ input[type=checkbox]:checked + label {
   font-size: 18px;
 }
 
-.glyphicon-star.white {
+button.btn > span.glyphicon-star {
     color: white;
     font-size: 15px;
 }
