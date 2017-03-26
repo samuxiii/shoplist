@@ -4,8 +4,8 @@ angular.
   module('itemList').
   component('itemList', {
     templateUrl: 'item-list/item-list.template.html',
-    controller: ['$http',
-      function ItemListController($http) {
+    controller: ['$http', '$location',
+      function ItemListController($http, $location) {
         var self = this;
         self.formItem = {};
 
@@ -23,6 +23,11 @@ angular.
             });
 
         /* methods */
+        //move to another URL
+        self.go = function (path) {
+            $location.path(path);
+        };
+
         //add a new item to the shopping list
         self.createItem = function(){
             //avoid empty items
