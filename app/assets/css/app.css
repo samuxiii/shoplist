@@ -35,4 +35,5 @@ input[type=checkbox]:checked + label {
 
 .glyphicon-star.white {
     color: white;
+    font-size: 15px;
 }
