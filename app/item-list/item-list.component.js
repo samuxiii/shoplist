@@ -33,7 +33,7 @@ angular.
             //avoid empty items
             if (!self.formItem.text)
                 return;
-
+                
             $http.post('/api/shoplist', self.formItem)
                 .success(function(data) {
                     self.formItem = {};
@@ -59,6 +59,7 @@ angular.
 
         //mark item as star
         self.starredItem = function(item){
+            item.star = !item.star;
             $http.put('/api/shoplist/' + item._id, item)
                 .success(function(data) {
                     self.list = data;

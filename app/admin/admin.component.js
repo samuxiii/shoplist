@@ -21,9 +21,9 @@ angular.
         /* methods */
         //add a new item to the shopping list
         self.addItem = function(item){
-          $http.post('/api/shoplist', item)
+          item.done = false;
+          $http.put('/api/shoplist/' + item._id, item)
                 .success(function(data) {
-                    //self.list = data;
                     console.log(data);
                 })
                 .error(function(data) {

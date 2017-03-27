@@ -17,12 +17,13 @@ app.configure(function() {
 /* database model */
 var ShopList = mongoose.model('ShopList', {  
     text: String,
-    star: Boolean
+    done: {type: Boolean, default: false},
+    star: {type: Boolean, default: false}
 });
 
 /* endpoints */
 app.get('/api/shoplist', function(req, res) {  
-    ShopList.find(function(err, list) {
+    ShopList.find({done:false}, function(err, list) {
         if(err) {
             res.send(err);
         }
@@ -31,7 +32,7 @@ app.get('/api/shoplist', function(req, res) {
 });
 
 app.get('/api/shoplist/starred', function(req, res) {  
-    ShopList.find({star:true}, function(err, list) {
+    ShopList.find({done:true, star:true}, function(err, list) {
         if(err) {
             res.send(err);
         }
@@ -47,7 +48,7 @@ app.post('/api/shoplist', function(req, res) {
             res.send(err);
         }
         //retrieve the whole list
-        ShopList.find(function(err, list) {
+        ShopList.find({done:false}, function(err, list) {
             if(err){
                 res.send(err);
             }
@@ -65,7 +66,8 @@ app.put('/api/shoplist/:item', function(req, res) {
         }
         //update the found item
         found.text = req.body.text;
-        found.star = !req.body.star;
+        found.done = req.body.done;
+        found.star = req.body.star;
         found.save(function(err, found){
             if (err) {
                 res.send(err);
@@ -73,7 +75,7 @@ app.put('/api/shoplist/:item', function(req, res) {
         }) /* save() returns promises */
         .then(function(){
             //retrieve the whole list
-            ShopList.find(function (err, list) {
+            ShopList.find({done:false}, function (err, list) {
                 if (err) {
                     res.send(err);
                 }
@@ -83,22 +85,49 @@ app.put('/api/shoplist/:item', function(req, res) {
     });
 });
 
-app.delete('/api/shoplist/:item', function(req, res) {  
-    ShopList.remove({
+app.delete('/api/shoplist/:item', function(req, res) {
+    ShopList.findById({
         _id: req.params.item
-    }, function(err, item) {
+    }, function(err, found) {
         if(err){
             res.send(err);
         }
-        //retrieve the whole list
-        ShopList.find(function(err, list) {
-            if(err){
-                res.send(err);
-            }
-            res.json(list);
-        });
-
-    })
+        //if starred item, only update the 'done' attr
+        if(found.star) {
+            found.done = true;
+            found.save(function(err, found){
+                if (err) {
+                    res.send(err);
+                }
+            })
+            .then(function() {
+                //retrieve the whole list
+                ShopList.find({done:false}, function (err, list) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.json(list);
+                });
+            });
+        }
+        //it's not a starred item, remove it
+        else {
+            ShopList.remove({
+                _id: req.params.item
+            }, function(err, item) {
+                if(err){
+                    res.send(err);
+                }
+                //retrieve the whole list
+                ShopList.find({done:false}, function(err, list) {
+                    if(err){
+                        res.send(err);
+                    }
+                    res.json(list);
+                });
+            });
+        }
+    });
 });
 
 //define where the index is placed
