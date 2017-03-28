@@ -30,14 +30,14 @@
                 <div class="form-group">
                     <input type="text" class="form-control input-lg text-center" placeholder="Add new item" ng-model="$ctrl.formItem.text">
                 </div>
-                <button class="btn btn-primary btn-md" ng-click="$ctrl.createItem()">
-                    <span class="glyphicon glyphicon-plus"></span> Add
-                </button>
                 <button class="btn btn-warning btn-md" ng-click="$ctrl.wipe()">
                     <span class="glyphicon glyphicon-remove"></span> Wipe
                 </button>
                 <button class="btn btn-success btn-md" ng-click="$ctrl.go('/admin')">
                     <span class="glyphicon glyphicon-star"></span> Starred
+                </button>
+                <button class="btn btn-primary btn-md" ng-click="$ctrl.createItem()">
+                    <span class="glyphicon glyphicon-plus"></span> Add
                 </button>
             </form>
         </div>
