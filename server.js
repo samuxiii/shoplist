@@ -32,7 +32,7 @@ app.get('/api/shoplist', function(req, res) {
 });
 
 app.get('/api/shoplist/starred', function(req, res) {  
-    ShopList.find({done:true, star:true}, function(err, list) {
+    ShopList.find({done:true, star:true}, null, {sort: {text:1}}, function(err, list) {
         if(err) {
             res.send(err);
         }
