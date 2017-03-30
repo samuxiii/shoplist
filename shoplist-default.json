@@ -1,0 +1,67 @@
+[
+  {
+    "text": "Almonds",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Beers",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Bleach",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Bread",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Cheese wedge",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Coffee",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Ketchup",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Lemons",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Milk",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Sandwich bread",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Slices of cheese",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Water",
+    "star": true,
+    "done": true
+  },
+  {
+    "text": "Wieners",
+    "star": true,
+    "done": true
+  }
+]

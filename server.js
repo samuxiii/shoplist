@@ -1,6 +1,8 @@
-var express = require('express');  
+var express = require('express');
 var app = express();  
 var mongoose = require('mongoose');
+
+var initialList = require('./shoplist-default.json');
 var listen_port = 9981;
 
 /* database connection */
@@ -19,6 +21,19 @@ var ShopList = mongoose.model('ShopList', {
     text: String,
     done: {type: Boolean, default: false},
     star: {type: Boolean, default: false}
+});
+
+/* initialize the database if empty */
+ShopList.count(function(err, c) {
+    if (c == 0) {
+        ShopList.insertMany(initialList, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("ShopList has been initialized.");
+            }
+        });
+    }
 });
 
 /* endpoints */
