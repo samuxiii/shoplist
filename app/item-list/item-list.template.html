@@ -26,7 +26,7 @@
     <!--Form for new items-->
     <div id="form" class="row">
         <div class="col-sm-4 col-sm-offset-4 text-center">
-            <form>
+            <form ng-submit="$ctrl.createItem()">
                 <div class="form-group">
                     <input type="text" class="form-control input-lg text-center" placeholder="Add new item" ng-model="$ctrl.formItem.text">
                 </div>   
