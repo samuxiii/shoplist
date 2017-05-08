@@ -1,16 +1,25 @@
 {
-    "name": "shopping-list",
-    "version": "1.0.0",
-    "description": "Shopping list app based in MEAN stack",
-    "main": "server.js",
-    "license": "MIT",
-    "private": true,
-    "dependencies": {
-        "express": "~3.x",
-        "mongoose": "latest"
-    },
-    "scripts": {
-        "prestart": "npm install",
-        "start": "node server.js"
-    }
+  "name": "shopping-list",
+  "version": "1.0.0",
+  "description": "Shopping list app based in MEAN stack",
+  "main": "server.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "~3.x",
+    "mongoose": "latest"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node server.js",
+    "test": "karma start"
+  },
+  "devDependencies": {
+    "angular": "^1.6.4",
+    "angular-mocks": "^1.6.4",
+    "jasmine-core": "^2.6.1",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0"
+  }
 }
