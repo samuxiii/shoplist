@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/samuxiii/shoplist.svg?branch=beta)](https://travis-ci.org/samuxiii/shoplist)
+
 # Shopping List App
 Application to manage the shopping list
 
