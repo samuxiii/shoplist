@@ -9,7 +9,6 @@ describe('AdminControllerTest', function() {
   var $httpBackend, ctrl;
   beforeEach(inject(function($componentController, _$httpBackend_) {
     $httpBackend = _$httpBackend_;
-    //$httpBackend.expectGET('phones/xyz.json').respond({name: 'phone xyz'});
     $ctrl = $componentController('admin', {$httpBackend});
   }));
   

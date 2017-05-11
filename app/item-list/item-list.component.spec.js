@@ -10,7 +10,6 @@ describe('ItemListControllerTest', function() {
   beforeEach(inject(function($componentController, _$httpBackend_, _$location_) {
     $httpBackend = _$httpBackend_;
     $location = _$location_;
-    //$httpBackend.expectGET('phones/xyz.json').respond({name: 'phone xyz'});
     $ctrl = $componentController('itemList', {$httpBackend, $location});
   }));
   
