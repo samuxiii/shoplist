@@ -3,11 +3,10 @@ describe('AdminControllerTest', function() {
   beforeEach(module('admin'));
 
   it('executes a dummy test', inject(function() {
-    expect(0).toBe(0);
+    expect(true).toBe(true);
   }));
   
-  var $httpBackend, ctrl;
-  var item;
+  var $httpBackend, ctrl, item;
 
   beforeEach(inject(function($componentController, _$httpBackend_) {
     item = {_id:1, text:"new", star:true, done:true};
