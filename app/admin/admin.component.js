@@ -8,19 +8,20 @@ angular.
       function AdminController($http) {
         var self = this;
 
-        //first retrieve the complete list
-        $http.get('/api/shoplist/starred')
-            .success(function(data) {
-                self.defaultList = data;
-                console.log(data)
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-
         /* methods */
+        self.init = function() {
+          //retrieval of the complete list
+          $http.get('/api/shoplist/starred')
+              .success(function(data) {
+                  self.defaultList = data;
+              })
+              .error(function(data) {
+                  console.log('Error: ' + data);
+              });
+        };
+
         //add a new item to the shopping list
-        self.addItem = function(item){
+        self.moveStarredToList = function(item){
           item.done = false;
           $http.put('/api/shoplist/' + item._id, item)
                 .success(function(data) {
@@ -30,11 +31,16 @@ angular.
                     console.log('Error:' + data);
                 });
           //remove from the current default list
-          var i = self.defaultList.indexOf(item);
-          if (i !=-1 ) {
-            self.defaultList.splice(i, 1);
+          var index = self.defaultList.map(function(x) {
+                         return x._id; 
+                      }).indexOf(item._id);
+
+          if (index !=-1 ) {
+            self.defaultList.splice(index, 1);
           }
         };
+
+        self.init();
       }
     ]
   });

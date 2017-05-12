@@ -8,7 +8,7 @@
     <div id="shop-list" class="row">
         <div class="col-4 text-center">
             <div class="checkbox" ng-repeat="item in $ctrl.defaultList">
-                <button class="btn btn-primary btn-md" ng-click="$ctrl.addItem(item)">
+                <button class="btn btn-primary btn-md" ng-click="$ctrl.moveStarredToList(item)">
                     <span class="glyphicon glyphicon-plus"></span> {{item.text}}
                 </button>
             </div>
