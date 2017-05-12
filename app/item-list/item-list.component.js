@@ -7,22 +7,25 @@ angular.
     controller: ['$http', '$location',
       function ItemListController($http, $location) {
         var self = this;
-        self.formItem = {};
-
-        //temporary array for selected items
-        self.user = { list:[] };
-
-        //first retrieve the complete list
-        $http.get('/api/shoplist')
-            .success(function(data) {
-                self.list = data;
-                console.log(data)
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
 
         /* methods */
+        self.init = function() {
+            //it will be modeled by html template
+            self.formItem = {};
+            //temporary array for selected items
+            self.user = { list:[] };
+
+            //first retrieve the complete list
+            $http.get('/api/shoplist')
+                .success(function(data) {
+                    self.list = data;
+                    console.log(data)
+                })
+                .error(function(data) {
+                    console.log('Error: ' + data);
+                });
+        };
+
         //move to another URL
         self.go = function (path) {
             $location.path(path);
@@ -87,6 +90,8 @@ angular.
               self.deleteItem(v._id);
           })
         };
+
+        self.init();
       }
     ]
   });
