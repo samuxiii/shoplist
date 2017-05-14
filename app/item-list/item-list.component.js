@@ -75,12 +75,15 @@ angular.
 
         //manage the selected items
         self.updateSelectedItems = function(item) {
-          var i = self.user.list.indexOf(item);
+          var index = self.user.list.map(function(x) {
+                         return x._id; 
+                      }).indexOf(item._id);
           //if exists, delete, if not, create
-          if (i != -1) 
-            self.user.list.splice(i, 1);
-          else 
-            self.user.list.push(item); 
+          if (index != -1) {
+            self.user.list.splice(index, 1);
+          } else {
+            self.user.list.push(item);
+          } 
         };
 
         //remove the selected items
