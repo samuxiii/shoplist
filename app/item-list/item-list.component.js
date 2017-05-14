@@ -79,19 +79,26 @@ angular.
                          return x._id; 
                       }).indexOf(item._id);
           //if exists, delete, if not, create
-          if (index != -1) {
+          if (index != -1)
             self.user.list.splice(index, 1);
-          } else {
-            self.user.list.push(item);
-          } 
+          else
+            self.user.list.push(item); 
         };
 
         //remove the selected items
         self.wipe = function() {
-          angular.forEach(self.user.list, function(v, k){
+          var deselectItems = [];
+          //delete
+          angular.forEach(self.user.list, function(v, k) {
               console.log("Wipe: " + v.text);
               self.deleteItem(v._id);
-          })
+              deselectItems.push(v);
+          });
+          //clean seleted
+          angular.forEach(deselectItems, function(v, k) {
+              console.log("Deselect: " + v.text);
+              self.updateSelectedItems(v);
+          });
         };
 
         self.init();
