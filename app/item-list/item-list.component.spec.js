@@ -36,7 +36,7 @@ describe('ItemListControllerTest', function() {
     $httpBackend.flush();
     expect(ctrl.list).toEqual([item]);
 
-    var selectedItem = {_id:2, text:"new", star:true, done:true};
+    var selectedItem = {_id:2, text:"new", star:false, done:false};
     
     ctrl.updateSelectedItems(selectedItem);
     expect(ctrl.user.list).toEqual([selectedItem]);
@@ -46,6 +46,34 @@ describe('ItemListControllerTest', function() {
     
     ctrl.updateSelectedItems(selectedItem);
     expect(ctrl.user.list).toEqual([item]);
+  }));
+
+  it('should clean the list and the selected items', inject(function() {
+    //$httpBackend.flush();
+    expect(ctrl.user.list).toEqual([]);
+
+    var item2 = {_id:2, text:"item2", star:false, done:false};
+    var item3 = {_id:3, text:"item3", star:false, done:false};
+    var item4 = {_id:4, text:"item4", star:true, done:false};
+    
+    //populate items
+    ctrl.list = [item, item2, item3, item4];
+    //selected items
+    ctrl.user.list = [item2, item4];
+
+    //define delete operations as expected
+    $httpBackend.expectDELETE('/api/shoplist/2')
+                .respond([item, item3, item4]);
+    $httpBackend.expectDELETE('/api/shoplist/4')
+                .respond([item, item3]);
+
+    //call wipe
+    ctrl.wipe();
+    $httpBackend.flush();
+
+    //the list and user list must be empty
+    expect(ctrl.list).toEqual([item, item3]);
+    expect(ctrl.user.list).toEqual([]);
   }));
 
 });
