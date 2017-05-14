@@ -9,7 +9,7 @@ describe('ItemListControllerTest', function() {
   var $httpBackend, ctrl, item;
   
   beforeEach(inject(function($componentController, _$httpBackend_, _$location_) {
-    item = {_id:1, text:"new", star:true, done:true};
+    item = {_id:1, text:"item", star:true, done:true};
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/shoplist')
                 .respond([item]);
@@ -18,8 +18,8 @@ describe('ItemListControllerTest', function() {
   }));
   
   it('checks certain methods are present', inject(function() {
-    expect(ctrl.createItem).toBeDefined();
-    expect(ctrl.deleteItem).toBeDefined();
+    expect(ctrl.createItem).toBeDefined(); //direct to db
+    expect(ctrl.deleteItem).toBeDefined(); //direct to db
     expect(ctrl.starredItem).toBeDefined();
     expect(ctrl.updateSelectedItems).toBeDefined();
     expect(ctrl.wipe).toBeDefined();
@@ -30,6 +30,22 @@ describe('ItemListControllerTest', function() {
     expect(ctrl.user).toBeDefined();
     $httpBackend.flush();
     expect(ctrl.list).toEqual([item]);
+  }));
+
+  it('should update selected items removing or adding to the user list', inject(function() {
+    $httpBackend.flush();
+    expect(ctrl.list).toEqual([item]);
+
+    var selectedItem = {_id:2, text:"new", star:true, done:true};
+    
+    ctrl.updateSelectedItems(selectedItem);
+    expect(ctrl.user.list).toEqual([selectedItem]);
+
+    ctrl.updateSelectedItems(item);
+    expect(ctrl.user.list).toEqual([selectedItem, item]);
+    
+    ctrl.updateSelectedItems(selectedItem);
+    expect(ctrl.user.list).toEqual([item]);
   }));
 
 });
