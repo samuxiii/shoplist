@@ -14,8 +14,12 @@ Application to manage the shopping list
 $ cd shoplist
 $ npm install
 ``` 
+## Run test
+```
+$ npm test
+``` 
 
-## Run and check
+## Run
 ```
 $ npm start
 ``` 
