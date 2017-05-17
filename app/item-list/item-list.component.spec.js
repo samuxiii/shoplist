@@ -32,6 +32,28 @@ describe('ItemListControllerTest', function() {
     expect(ctrl.list).toEqual([item]);
   }));
 
+  it('should enable and disable star in items', inject(function() {
+    var itemWithoutStar = {_id:1, text:"item", star:false, done:false};
+    var itemWithStar = {_id:1, text:"item", star:true, done:false};
+
+    ctrl.list = [itemWithoutStar];
+
+    //define put operations as expected
+    $httpBackend.expectPUT('/api/shoplist/1')
+                .respond([itemWithoutStar]);
+    $httpBackend.expectPUT('/api/shoplist/1')
+                .respond([itemWithStar]);
+
+    //disable star
+    ctrl.starredItem(itemWithStar);
+    expect(ctrl.list[0].star).toBe(false);
+
+    //enable star
+    ctrl.starredItem(itemWithoutStar);
+    expect(ctrl.list[0].star).toBe(true);
+
+  }));
+
   it('should update selected items removing or adding to the user list', inject(function() {
     $httpBackend.flush();
     expect(ctrl.list).toEqual([item]);
@@ -49,7 +71,7 @@ describe('ItemListControllerTest', function() {
   }));
 
   it('should clean the list and the selected items', inject(function() {
-    //$httpBackend.flush();
+    $httpBackend.flush();
     expect(ctrl.user.list).toEqual([]);
 
     var item2 = {_id:2, text:"item2", star:false, done:false};
