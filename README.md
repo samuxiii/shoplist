@@ -15,6 +15,7 @@ $ cd shoplist
 $ npm install
 ``` 
 ## Run test
+Jasmine and Karma are used in order to allow the unit testing. These are configured in package.json as a script that can be executed directly from npm. 
 ```
 $ npm test
 ``` 
